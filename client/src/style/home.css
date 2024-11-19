@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Lao:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap");
+
+* {
+  /* font-family: "Kanit", "Poppins", "Noto Sans Lao", sans-serif !important; */
+  font-family: "Rethink Sans","Noto Sans Lao", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+html {
+  scroll-behavior: smooth;
+  /* color: #732dcf; */
+  
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-top: 10px; */
+}
+header nav {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-around;
+}
+header nav ul li {
+  padding: 20px;
+  padding-top: 0;
+  margin-top: -2vh;
+  padding-bottom: 10px;
+}
+header nav ul li a {
+  color: black;
+  font-weight: 500;
+  font-size: 15px;
+  /* text-transform: uppercase; */
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  width: 35%;
+  margin-top: -10px;
+}
+.headBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+.headBanner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ----------------------containerContent------------------ */
+.containerContent {
+  background-color: #e8e8e8;
+  width: 100%;
+  padding: 1vh 20vw;
+}
+.containerMainContent {
+  background-color: #e8e8e8;
+}
+.contentBelow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  margin-top: -15vh;
+  z-index: 99;
+}
+.search {
+  background-color: #8044cc;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding: 14px 20px;
+}
+.search h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 10px;
+  /* font-family: "Noto Sans Lao", sans-serif; */
+}
+.search input {
+  width: 100%;
+  background-color: #ffffffe1;
+  height: 40px;
+  border: 0px solid #fff;
+  /* font-family: "Noto Sans Lao", sans-serif; */
+  font-size: 15px;
+  border-radius: 5px 0px 0 5px;
+}
+.search input::placeholder {
+  padding-left: 15px;
+}
+.inputSearch {
+  display: flex;
+}
+.inputSearch svg {
+  width: 20px;
+}
+.submitSearch {
+  display: flex;
+  align-items: center;
+  background-color: #ffffffe1;
+  text-align: center;
+  color: #000;
+  border-radius: 0px 5px 5px 0px;
+  padding-right: 15px;
+}
+.buttonLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.buttonLink h1 {
+  color: #878787;
+  font-weight: 100;
+}
+/* .firstButton , .secondButton , .thirdButton {
+    display: flex;
+} */
+.buttonLink > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 70px;
+  text-decoration: none;
+  text-transform: none;
+  list-style: none;
+  color: #000;
+}
+.buttonLink > a > h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+}
+.firstButton img,
+.secondButton img,
+.thirdButton img {
+  width: 30px;
+  margin-bottom: 8px;
+}
+.loginLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.buttonLogin {
+  background: rgb(104, 0, 208);
+  background: linear-gradient(
+    90deg,
+    rgb(153, 0, 208) 0%,
+    rgb(111, 0, 208) 50%,
+    rgb(94, 88, 255) 100%
+  );
+  padding: 10px 30px;
+  opacity: 0.7;
+  z-index: 1;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 3px 4px 5px #0000006e;
+  box-shadow: 2px 4px 10px #00000032;
+}
+
+.containerMainContent {
+  padding: 3vh 10vw;
+}
+.contentSlide {
+  padding: 0 10vw;
+  padding-top: 5vh;
+}
+.contentSlide h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.containerDetails h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.contentSlide span {
+  font-weight: 900;
+  color: #8044cc;
+}
+.containerDetails span {
+  font-weight: 900;
+  color: #8044cc;
+}
+.containerDetails {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 100%;
+  padding: 5vh 15vw;
+  margin-bottom: 30px;
+  border-radius: 20px;
+}
+.contentButtonPosition {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+}
+
+.contentButtonPosition div {
+  /* background: rgb(31, 124, 255); */
+  padding: 35px 45px;
+  border-radius: 20px;
+  width: 450px;
+  height: 200px;
+  margin: 20px;
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
+.contentButtonPosition div a {
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #00000036;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 3px 3px 6px #000000;
+  text-align: center;
+}
+.containerAbout {
+  background: rgb(35, 45, 105);
+  background: radial-gradient(
+    circle,
+    rgba(35, 45, 105, 1) 0%,
+    rgb(16, 31, 65) 100%
+  );
+  padding: 5vh 10vw;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+.containerAbout h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.containerAbout span {
+  font-weight: 900;
+  color: #8044cc;
+}
+.containerAbout .content p {
+  padding: 30px 60px;
+  font-weight: 200;
+}
+footer {
+  background-color: #8044cc;
+  height: auto;
+}
+
+footer .logo {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer .logo img {
+  width: 10%;
+}
+.navfooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.navfooter ul {
+  display: flex;
+}
+.navfooter ul li a {
+  color: #fff;
+}
+.navfooter ul li {
+  padding: 20px;
+  padding-top: 0;
+  margin-top: -2vh;
+  padding-bottom: 10px;
+}
+
+footer h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.webService {
+  padding: 0 15vw;
+}
+
+.buttonFirst {
+  background: linear-gradient(to left, #8044cc 20%, rgba(0, 0, 0, 0.185) 100%),
+    url("../assets/flagthai.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.buttonSecond {
+  background: linear-gradient(to left, #8044cc 20%, rgba(0, 0, 0, 0.185) 100%),
+    url("../assets/flagChina.jpg");
+  background-size: cover;
+  background-position: start;
+  background-repeat: no-repeat;
+}
+.buttonThird {
+  background: linear-gradient(to left, #8044cc 20%, rgba(0, 0, 0, 0.185) 100%),
+    url("../assets/flagLao.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.buttonFour {
+  background: linear-gradient(to left, #8044cc 20%, rgba(0, 0, 0, 0.185) 100%),
+    url("../assets/flagVietnam.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.contentButtonPosition section > div {
+  box-shadow: 4px 5px 6px #0000006c;
+}

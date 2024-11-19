@@ -1,0 +1,106 @@
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Information</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      
+      body {
+        font-family: "Kanit", sans-serif;
+        margin: 40px;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        text-align: center;
+        font-size: 10rem;
+      }
+      .info {
+        margin-bottom: 20px;
+      }
+      .info p {
+        margin: 0;
+        font-size: 16px;
+      } 
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .table th,
+      .table td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+      }
+
+
+      @media (width: 2645px) and (height: 3779px) {
+        body {
+          margin: 80px;
+        }
+        .container {
+          max-width: none;
+          width: 90%;
+          font-size: 20px;
+        }
+        h1 {
+          font-size: 15rem;
+          text-align: center;
+        }
+        .table th,
+        .table td {
+          font-size: 18px;
+          padding: 16px;
+        }
+        .info p {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <img src="data:image/jpeg;base64,${base64Image}" alt="" />
+      </div>
+
+      <div class="info">
+        <p style="color: #051133">
+          <strong>ID :</strong> ${mainParcel.id_parcel}
+        </p>
+        <p style="color: #051133"><strong>จาก :</strong> ${fromValue}</p>
+        <p style="color: #051133">
+          <strong>ถึง :</strong> ${mainParcel.branch}
+        </p>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Width (cm)</th>
+            <th>Length (cm)</th>
+            <th>Height (cm)</th>
+            <th>Weight (kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>${detail.width}</td>
+            <td>${detail.length}</td>
+            <td>${detail.height}</td>
+            <td>${detail.weight}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align: end"><strong>จำนวน:</strong> ${detail.amount}</p>
+      <p style="text-align: end">
+        <strong>ราคารวม :</strong> ${detail.price} LAK
+      </p>
+    </div>
+  </body>
+</html>
