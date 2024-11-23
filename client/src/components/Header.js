@@ -13,7 +13,7 @@ function Header() {
         XX:XX
       </div>
       <div className="user-info">
-        <span>{'{ USERNAME }'} | { 'ตำเเหน่งโกดัง หรือ สาขาที่ประจำอยู่' }</span>
+        <span>{'{ USERNAME }'} | { 'ຕຳເເຫນ່ງໂກດັງ ຫລື ສາຂາທີ່ປະຈຳຢູ່' }</span>
         <button className="home-btn">ຫນ້າທໍາອິດ</button>
       </div>
     </div>

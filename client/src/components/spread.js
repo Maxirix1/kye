@@ -166,8 +166,8 @@ const Spread = () => {
           className="px-4 py-2 bg-purple-600 text-white rounded mt-6 text-sm"
         >
           {selectedParcels.size === parcels.length
-            ? "ยกเลิกการเลือกทั้งหมด"
-            : "เลือกทั้งหมด"}
+            ? "ຍົກເລີກການເລືອກທັງໝົດ"
+            : "ເລືອກທັງໝົດ"}
         </button>
       </div>
 

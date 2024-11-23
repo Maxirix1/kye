@@ -175,7 +175,7 @@ const InventoryStatistics = () => {
             marginBottom: "20px",
           }}
         >
-          <h2 style={{ fontSize: "24px", margin: 0 }}>การจัดการ</h2>
+          <h2 style={{ fontSize: "24px", margin: 0 }}>ການຈັດການ</h2>
           {isMobile && (
             <button
               onClick={toggleSidebar}
@@ -200,7 +200,7 @@ const InventoryStatistics = () => {
               isMobile && toggleSidebar();
             }}
           >
-            หน้าแรก
+            ໜ້າແຮກ
           </Link>
           <Link
             to="/homeAdmin/list"
@@ -210,7 +210,7 @@ const InventoryStatistics = () => {
               isMobile && toggleSidebar();
             }}
           >
-            รายการพัสดุ
+            ລາຍການພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/distribution"
@@ -220,7 +220,7 @@ const InventoryStatistics = () => {
               isMobile && toggleSidebar();
             }}
           >
-            กระจายพัสดุ
+            ກະຈາຍພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/branch"
@@ -230,7 +230,7 @@ const InventoryStatistics = () => {
               isMobile && toggleSidebar();
             }}
           >
-            ข้อมูลสาขา
+            ຂໍ້ມູນສາຂາ
           </Link>
         </nav>
         <button
@@ -284,7 +284,7 @@ const InventoryStatistics = () => {
                 ☰
               </button>
             )}
-            <h1 style={{ fontSize: "24px", margin: "0" }}>หน้าแรก</h1>
+            <h1 style={{ fontSize: "24px", margin: "0" }}>ໜ້າແຮກ</h1>
           </div>
           {!isMobile && (
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -313,7 +313,7 @@ const InventoryStatistics = () => {
                   cursor: "pointer",
                 }}
               >
-                หน้าเเรก
+                ໜ້າເເຣກ
               </Link>
             </div>
           )}
@@ -339,13 +339,13 @@ const InventoryStatistics = () => {
               >
                 {storedRole === "branch" ? (
                   <div>
-                    <h2 style={titleStyle}>จำนวนพัสดุทั้งหมด</h2>
-                    <h2 style={titleStyle}>ที่ถูกส่งมายังสาขา</h2>
+                    <h2 style={titleStyle}>ຈຳນວນພັດດຸທັງໝົດ</h2>
+                    <h2 style={titleStyle}>ທີ່ຖືກສົ່ງມາຍັງສາຂາ</h2>
                   </div>
                 ) : (
                   <div>
-                    <h2 style={titleStyle}>จำนวนพัสดุทั้งหมด</h2>
-                    <h2 style={titleStyle}>ที่อยู่ในโกดัง</h2>
+                    <h2 style={titleStyle}>ຈຳນວນພັດດຸທັງໝົດ</h2>
+                    <h2 style={titleStyle}>ທີ່ຢູ່ໃນໂກດັງ</h2>
                   </div>
                 )}
 
@@ -372,10 +372,10 @@ const InventoryStatistics = () => {
                       </span>
                     )}
 
-                    <span style={unitStyle}>ชิ้น</span>
+                    <span style={unitStyle}>ຊິ້ນ</span>
                   </div>
                   <p style={noteStyle}>
-                    จำนวนทั้งหมดนับจากข้อมูลพัสดุที่ถูกเพิ่ม
+                  ຈຳນວນທັງໝົດນັບຈາກຂໍ້ມູນພັດດຸທີ່ຖືກເພີ່ມ
                   </p>
                 </div>
               </div>
@@ -394,7 +394,7 @@ const InventoryStatistics = () => {
                     minWidth: "200px",
                   }}
                 >
-                  <h2 style={titleStyle}>เครดิต</h2>
+                  <h2 style={titleStyle}>ເຄຣດິດ</h2>
 
                   <div style={valueContainerStyle}>
                     <span style={valueStyle}>
@@ -419,7 +419,7 @@ const InventoryStatistics = () => {
 
           {storedBranch === "LAO Warehouse" ? (
             <div>
-              <h2>พัสดุที่อยู่ในโกดัง</h2>
+              <h2>ພັດດຸທີ່ຢູ່ໃນໂກດັງ</h2>
               {/* Data Table */}
               <table className="min-w-full leading-normal">
                 <thead>

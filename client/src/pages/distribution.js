@@ -350,7 +350,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
               isMobile && toggleSidebar();
             }}
           >
-            หน้าแรก
+            ໜ້າແຮກ
           </Link>
           <Link
             to="/homeAdmin/list"
@@ -360,7 +360,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
               isMobile && toggleSidebar();
             }}
           >
-            รายการพัสดุ
+            ລາຍການພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/distribution"
@@ -370,7 +370,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
               isMobile && toggleSidebar();
             }}
           >
-            กระจายพัสดุ
+            ກະຈາຍພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/branch"
@@ -380,7 +380,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
               isMobile && toggleSidebar();
             }}
           >
-            ข้อมูลสาขา
+            ຂໍ້ມູນສາຂາ
           </Link>
         </nav>
         <button

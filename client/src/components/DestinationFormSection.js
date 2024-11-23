@@ -8,7 +8,7 @@ function DestinationFormSection({ title, color }) {
       <div className="input-group">
         <label>ສາຂາ:</label>
         <select>
-          <option>{'สาขาที่ประจำอยู่'}</option>
+          <option>{'ສາຂາທີ່ປະຈຳການ'}</option>
         </select>
       </div>
       <div className="input-group">

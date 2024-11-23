@@ -134,7 +134,7 @@ const Origin = ({ onParcelChange }) => {
                 name="note"
                 value={parcelData.note}
                 onChange={handleInputChange}
-                placeholder="เพิ่มหมายเหตุ"
+                placeholder="ເພີ່ມໝາຍເຫດ"
                 style={{ ...inputStyle, height: "80px" }}
               ></textarea>
             </div>
@@ -160,7 +160,7 @@ const Origin = ({ onParcelChange }) => {
           </div>
           <div style={bodyStyle}>
             <div style={{ marginBottom: "10px" }}>
-              <label style={labelStyle}>สาขา :</label>
+              <label style={labelStyle}>ສາຂາ :</label>
               <select
                 style={inputStyle}
                 onChange={handleInputChange}
