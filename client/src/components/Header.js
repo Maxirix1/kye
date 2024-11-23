@@ -14,7 +14,7 @@ function Header() {
       </div>
       <div className="user-info">
         <span>{'{ USERNAME }'} | { 'ตำเเหน่งโกดัง หรือ สาขาที่ประจำอยู่' }</span>
-        <button className="home-btn">หน้าแรก</button>
+        <button className="home-btn">ຫນ້າທໍາອິດ</button>
       </div>
     </div>
   );

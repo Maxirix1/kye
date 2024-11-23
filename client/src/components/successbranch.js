@@ -117,7 +117,7 @@ const Successbranch = () => {
       </div>
       {parcelResponse ? (
         <>
-          <p>ยืนยันการส่งของให้ลูกค้า</p>
+          <p>ຢືນຢັນການຈັດສົ່ງສິນຄ້າໃຫ້ລູກຄ້າ</p>
           <table className="w-ful xl:w-[70%]">
             <thead>
               <tr className="bg-gray-200 text-gray-800">
@@ -171,7 +171,7 @@ const Successbranch = () => {
         </>
       ) : parcels.length > 0 ? (
         <>
-          <p className="text-start">ยืนยันการส่งของให้ลูกค้า</p>
+          <p className="text-start">ຢືນຢັນການຈັດສົ່ງສິນຄ້າໃຫ້ລູກຄ້າ</p>
           <table className="w-full xl:w-[70%]">
             <thead>
               <tr className="bg-gray-200 text-gray-800">
