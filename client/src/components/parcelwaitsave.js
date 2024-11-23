@@ -8,7 +8,7 @@ const ParcelWaitSave = () => {
     const fetchParcels = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/parcelswait"
+          "http://maxirix.thddns.net:7377/api/parcelswait"
         );
         setParcels(response.data);
       } catch (error) {
@@ -26,7 +26,7 @@ const ParcelWaitSave = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/parcel/updatebranch",
+        "http://maxirix.thddns.net:7377/api/parcel/updatebranch",
         updateStatus
       );
 
@@ -68,25 +68,24 @@ const ParcelWaitSave = () => {
           </button>
         </div>
       )}
-      <table className="mt-6 w-full text-sm text-left rtl:text-right text-gray-500 ">
+      <table className="mt-6 w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-start text-white uppercase bg-blue-500">
           <tr>
+            <th scope="col" className="px-6 py-3 text-start w-28">
+              No
+            </th>
             <th scope="col" className="px-6 py-3 text-start">
               ID PARCEL
             </th>
             <th scope="col" className="px-6 py-3 text-start">
               From
             </th>
-
             <th scope="col" className="px-6 py-3 text-start">
               Branch
             </th>
             <th scope="col" className="px-6 py-3 text-start">
               Type
             </th>
-            {/* <th scope="col" className="px-6 py-3 text-start">
-              Size (cm)
-            </th> */}
             <th scope="col" className="px-6 py-3 text-start">
               Weight (kg)
             </th>
@@ -100,22 +99,24 @@ const ParcelWaitSave = () => {
         </thead>
         <tbody>
           {parcels.length > 0 ? (
-            parcels.map((parcel) => (
+            parcels.map((parcel, index) => (
               <tr className="bg-white border-b" key={parcel.id_parcel}>
+                {/* แสดงลำดับ */}
+                <td className="px-6 py-4 font-medium text-start text-gray-900 whitespace-nowrap">
+                  {index + 1}
+                </td>
                 <td className="px-6 py-4 font-medium text-start text-gray-900 whitespace-nowrap">
                   {parcel.id_parcel}
                 </td>
                 <td className="px-6 py-4 text-start text-gray-900">
                   {parcel.from}
                 </td>
-                {/* <td className="px-6 py-4 text-start text-gray-900">{parcel.type}</td> */}
                 <td className="px-6 py-4 text-start text-gray-900">
                   {parcel.branch}
                 </td>
                 <td className="px-6 py-4 text-start text-gray-900">
                   {parcel.typeParcel}
                 </td>
-                {/* <td className="px-6 py-4 text-start text-gray-900">{parcel.width} | {parcel.lenght} | {parcel.height}</td> */}
                 <td className="px-6 py-4 text-start text-gray-900">
                   {parcel.weight}
                 </td>
@@ -123,13 +124,15 @@ const ParcelWaitSave = () => {
                   {parcel.price}
                 </td>
                 <td className="px-6 py-4 text-start text-gray-900 flex gap-4 justify-end">
-                <button
+                  {/* ปุ่มที่ต้องการ */}
+                  <button
                     className="flex items-center rounded-md bg-white from-slate-800 to-slate-700 py-2 px-4 border border-[#4842ed] text-center text-sm text-white transition-all shadow-sm focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="button"
                     onClick={() => openPDF(parcel.id_parcel)}
                   >
+                    {/* ไอคอน */}
                     <svg
-                      class="w-6 h-6 text-[#4842ed]"
+                      className="w-6 h-6 text-[#4842ed]"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -139,12 +142,12 @@ const ParcelWaitSave = () => {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-width="2"
+                        strokeWidth="2"
                         d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
                       />
                       <path
                         stroke="currentColor"
-                        stroke-width="2"
+                        strokeWidth="2"
                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
@@ -170,13 +173,12 @@ const ParcelWaitSave = () => {
                       />
                     </svg>
                   </button>
-                  
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="3" className="px-6 py-4 text-center">
+              <td colSpan="8" className="px-6 py-4 text-center">
                 No parcels found.
               </td>
             </tr>

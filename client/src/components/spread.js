@@ -18,7 +18,7 @@ const Spread = () => {
   useEffect(() => {
     const fetchParcels = async () => {
       try {
-        const response = await axios.post("http://localhost:5000/api/parcels", {
+        const response = await axios.post("http://maxirix.thddns.net:7377/api/parcels", {
           from: storedBranch,
         });
         setParcels(response.data);
@@ -44,7 +44,7 @@ const Spread = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/parcel",
+        "http://maxirix.thddns.net:7377/api/parcel",
         formID
       );
       console.log(response.data);
@@ -98,7 +98,7 @@ const Spread = () => {
     console.log("Sending parcelIds:", parcelIds);
 
     try {
-      await axios.post("http://localhost:5000/api/update-parcel-status", {
+      await axios.post("http://maxirix.thddns.net:7377/api/update-parcel-status", {
         parcelIds: parcelIds,
       });
 
@@ -187,7 +187,7 @@ const Spread = () => {
           {parcels.length > 0 ? (
             parcels
               .filter((parcel) => parcel.status === "origin")
-              .map((parcel) => (
+              .map((parcel, index) => (
                 <tr className="bg-white border-b" key={parcel.id_parcel}>
                   <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {parcel.id_parcel}

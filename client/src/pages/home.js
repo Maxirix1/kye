@@ -4,7 +4,7 @@ import "../style/main.css";
 import "../style/font-style.css";
 import "../style/responsive.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import Logo from "../assets/logo.png";
 import Banner from "../assets/banner.png";
 import Thai from "../assets/thailand.png";

@@ -11,6 +11,7 @@ import ParcelWait from "../components/parcelwaitsave";
 // import { Sidebar } from "../components/sidebar";
 import "../style/font-style.css";
 import axios from "axios";
+import { BarLoader } from "react-spinners";
 
 const DistributionDashboard = ({ onDetailsChange }) => {
   const navigate = useNavigate();
@@ -72,34 +73,9 @@ const DistributionDashboard = ({ onDetailsChange }) => {
   const handleParcelChange = (data) => {
     setParcelData(data);
   };
-
-  // const handleDetailChange = (data) => {
-  //   setDetailsData(data);
-  // };
-
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // let timerInterval;
-    // Swal.fire({
-    //   title: "Loading...",
-    //   timer: 5000,
-    //   timerProgressBar: true,
-    //   didOpen: () => {
-    //     Swal.showLoading();
-    //     const timer = Swal.getPopup().querySelector("b");
-    //     timerInterval = setInterval(() => {
-    //       timer.textContent = `${Swal.getTimerLeft()}`;
-    //     }, 500);
-    //   },
-    //   willClose: () => {
-    //     clearInterval(timerInterval);
-    //   },
-    // }).then((result) => {
-    //   if (result.dismiss === Swal.DismissReason.timer) {
-    //     console.log("I was closed by the timer");
-    //   }
-    // });
 
     const checkEmptyFields = Object.values(detailsData).some(
       (value) => value === "" || value === null || value === undefined
@@ -108,7 +84,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
       (value) => value === "" || value === null || value === undefined
     );
 
-    if (checkEmptyFields) {
+    if (checkEmptyFields || checkEmptyParcel) {
       Swal.fire({
         title: "ข้อมูลไม่ครบถ้วน",
         text: "กรุณากรอกข้อมูลทุกช่องให้ครบถ้วน",
@@ -116,22 +92,15 @@ const DistributionDashboard = ({ onDetailsChange }) => {
       });
       return;
     }
-    if (checkEmptyParcel) {
-      Swal.fire({
-        title: "ข้อมูลไม่ครบถ้วน",
-        text: "กรุณากรอกข้อมูลทุกช่องให้ครบถ้วน",
-        icon: "info",
-      });
-      return;
-    }
-    console.log("Updated detailsData:", detailsData.price);
+
+    // แสดง Loading spinner ขณะทำการเช็คเครดิต
+    setLoading(true); // เริ่มการโหลด
 
     try {
+      // เช็คเครดิตก่อน
       const checkCredit = await axios.post(
-        "http://localhost:5000/api/checkcredit",
-        {
-          branch: parcelData.branch,
-        }
+        "http://maxirix.thddns.net:7377/api/checkcredit",
+        { branch: parcelData.branch }
       );
 
       const userCredit = checkCredit.data.credit;
@@ -142,24 +111,30 @@ const DistributionDashboard = ({ onDetailsChange }) => {
           text: `ยอดเครดิตในสาขา ${parcelData.branch} ไม่พอ กรุณาตรวจสอบอีกครั้ง`,
           icon: "error",
         });
+        setLoading(false); // ปิดการโหลด
         return;
       }
 
       const fullData = {
         parcel: parcelData,
         detail: detailsData,
-        price: detailsData.price,
       };
-      // console.log("fullData", fullData.price);
 
+      // ส่งข้อมูลไปยัง API เพื่อบันทึกข้อมูล
       const response = await axios.post(
-        "http://localhost:5000/api/saveData",
+        "http://maxirix.thddns.net:7377/api/saveData",
         fullData
       );
-      console.log("Data Save Successfully:", response.data);
-      console.log("fullData", fullData);
 
-      window.location.reload();
+      if (response.status === 200) {
+        console.log("Data Save Successfully:", response.data);
+        Swal.fire({
+          title: "สำเร็จ",
+          text: "ข้อมูลพัสดุได้ถูกบันทึกเรียบร้อยแล้ว",
+          icon: "success",
+        });
+        window.location.reload();
+      }
     } catch (error) {
       console.log("Error Save data | Try again", error);
       Swal.fire({
@@ -167,6 +142,8 @@ const DistributionDashboard = ({ onDetailsChange }) => {
         text: "โปรดรับพัสดุเข้าโกดัง | หรือติดต่อเจ้าหน้าที่",
         icon: "error",
       });
+    } finally {
+      setLoading(false); // ปิดการโหลด
     }
   };
 
@@ -197,7 +174,9 @@ const DistributionDashboard = ({ onDetailsChange }) => {
   useEffect(() => {
     const fetchRate = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/rate");
+        const response = await axios.get(
+          "http://maxirix.thddns.net:7377/api/rate"
+        );
         setRateChina(response.data.china);
         setRateThai(response.data.thai);
       } catch (error) {
@@ -242,7 +221,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
       case "H":
       case "I":
         // ใช้ตารางราคาเดียวกันสำหรับทุกประเภท
-        if (size <= 25 && weight <= 0.5) price = 25;
+        if (size <= 25 && weight <= 0.5) price = 25 * rateThai;
         else if (size <= 35 && weight <= 1) price = 35 * rateThai;
         else if (size <= 45 && weight <= 3) price = 45 * rateThai;
         else if (size <= 60 && weight <= 5) price = 60 * rateThai;
@@ -310,6 +289,15 @@ const DistributionDashboard = ({ onDetailsChange }) => {
         fontFamily: "Arial, sans-serif",
       }}
     >
+      <div>
+        {/* แสดง Loading Spinner เมื่อกำลังโหลด */}
+        {loading ? (
+          <div className="absolute inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+            <BarLoader color="#b104e0" loading={loading} size={50} />
+          </div>
+        ) : null}
+      </div>
+
       {/* <Sidebar/> */}
 
       {/* Sidebar */}

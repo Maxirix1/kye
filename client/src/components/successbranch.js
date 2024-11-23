@@ -12,7 +12,7 @@ const Successbranch = () => {
     const fetchSuccess = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcelBranch",
+          "http://maxirix.thddns.net:7377/api/parcelBranch",
           {
             username: username,
           }
@@ -36,7 +36,7 @@ const Successbranch = () => {
     if (pasted.length >= 5) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcel/searchsuccess",
+          "http://maxirix.thddns.net:7377/api/parcel/searchsuccess",
           {
             id_parcel: pasted,
             username: username,
@@ -56,7 +56,7 @@ const Successbranch = () => {
     const id_parcel = parcelResponse.id_parcel;
     try {
       const success = await axios.post(
-        "http://localhost:5000/api/updatesuccess",
+        "http://maxirix.thddns.net:7377/api/updatesuccess",
         { id_parcel: id_parcel }
       );
       if (success.status === 200) {

@@ -22,7 +22,7 @@ const InventoryStatistics = () => {
     const countParcels = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcels/count",
+          "http://maxirix.thddns.net:7377/api/parcels/count",
           { from: storedBranch }
         );
         setTotalParcels(response.data.total);
@@ -37,7 +37,7 @@ const InventoryStatistics = () => {
     const countParcelsLao = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcels/countwarehouse"
+          "http://maxirix.thddns.net:7377/api/parcels/countwarehouse"
         );
         setTotalParcelsLao(response.data.total);
       } catch (error) {
@@ -50,7 +50,7 @@ const InventoryStatistics = () => {
   useEffect(() => {
     const fetchCredit = async () => {
       try {
-        const response = await axios.post("http://localhost:5000/api/credit", {
+        const response = await axios.post("http://maxirix.thddns.net:7377/api/credit", {
           username,
         });
         setCredit(response.data.credit);
@@ -66,7 +66,7 @@ const InventoryStatistics = () => {
     const listParcel = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/listparcel"
+          "http://maxirix.thddns.net:7377/api/listparcel"
         );
         setListParcel(response.data);
       } catch (error) {
@@ -80,7 +80,7 @@ const InventoryStatistics = () => {
     const countParcelBranch = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcels/countbranch",
+          "http://maxirix.thddns.net:7377/api/parcels/countbranch",
           {
             username: username,
           }

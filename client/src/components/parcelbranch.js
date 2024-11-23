@@ -14,7 +14,7 @@ const ParcelBranch = () => {
     const fetchParcelsSave = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcelBranch",
+          "http://maxirix.thddns.net:7377/api/parcelBranch",
           {
             username: username,
           }
@@ -37,7 +37,7 @@ const ParcelBranch = () => {
     if (pastedData.length >= 5) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcel/search",
+          "http://maxirix.thddns.net:7377/api/parcel/search",
           {
             id_parcel: pastedData,
             username: username,
@@ -52,7 +52,7 @@ const ParcelBranch = () => {
 
         try {
           const saveResponse = await axios.post(
-            "http://localhost:5000/api/parcel/saveerror",
+            "http://maxirix.thddns.net:7377/api/parcel/saveerror",
             {
               id_parcel: pastedData,
               username: username,
@@ -70,7 +70,7 @@ const ParcelBranch = () => {
     // console.log(idParcel);
     try {
       const responseUpdate = await axios.post(
-        "http://localhost:5000/api/updatereceive",
+        "http://maxirix.thddns.net:7377/api/updatereceive",
         { id_parcel: idParcel }
       );
       if (responseUpdate.status === 200) {

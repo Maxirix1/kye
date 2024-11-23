@@ -164,7 +164,6 @@ exports.countParcelsBranch = async (req, res) => {
   }
 };
 
-
 exports.loginUser = async (req, res) => {
   const { email, passwrd } = req.body;
 
@@ -228,7 +227,6 @@ exports.saveData = async (req, res) => {
       const mainParcel = parcel;
       const fromValue = existingParcel.from;
 
-
       const dataExpress = {
         id_parcel: mainParcel.id_parcel,
         from: fromValue,
@@ -277,7 +275,7 @@ exports.saveData = async (req, res) => {
       } catch (error) {
         console.error("Error while updating credit", error);
       }
-      
+
       const [updated] = await ParcelDetail.update(dataExpress, {
         where: { id_parcel: mainParcel.id_parcel },
       });
@@ -298,139 +296,65 @@ exports.saveData = async (req, res) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parcel Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Lao:wght@100..900&display=swap");
-
-      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-      * {
-        font-family: "Kanit", sans-serif, "Rethink Sans", "Noto Sans Lao",
-          sans-serif;
-        /* font-family: ; */
-      }
+      @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap");
 
       body {
         font-family: "Kanit", sans-serif;
-        margin: 40px;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        width: 100%;
-        /* max-width: 800px; */
-        margin: 0 auto;
-      }
-      h1 {
-        text-align: center;
-        font-size: 10rem;
-      }
-      .info {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-      }
-      .info p {
-        margin: 0;
-        font-size: 5rem;
-      }
-      .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-      .table th,
-      .table td {
-        border: 1px solid #000;
-        padding: 30px;
-        color: #5625b0;
-        font-size: 4rem;
-        font-weight: 600;
-        text-align: left;
-      }
-      .table td {
-        padding: 80px;
-      }
-      img {
-        width: 30%;
-        margin: 100px 0;
-      }
-      .contentinfo {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .contentcenter {
-        display: flex;
-        margin: 2vh 0;
-      }
-      .contentcenter p {
-        font-size: 6rem;
-      }
-      .footer {
-        margin-top: 10vh;
-        font-size: 5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <div style="display: flex; align-items: center; justify-content: center">
-        <img src="data:image/jpeg;base64,${base64Image}" alt="" />
-      </div>
-      <!-- <h1 style="color: #281252; ">ข้อมูลพัสดุ</h1> -->
-      <div class="info">
-        <div class="contentinfo">
-          <p style="color: #051133"><strong>จาก :</strong> ${fromValue}</p>
-          <p style="color: #051133">
-            <strong>ถึง :</strong> ${mainParcel.branch}
-          </p>
-        </div>
-        <div class="contentcenter">
-          <p style="color: #051133">${mainParcel.id_parcel}</p>
-        </div>
+  <body class="bg-gray-100 flex justify-center items-center">
+    <div class="container mx-auto bg-white shadow-lg rounded-lg p-12 w-full max-w-[2400px] h-full flex flex-col items-center">
+      <!-- โลโก้ -->
+      <div class="w-full flex justify-center mb-8">
+        <img src="data:image/jpeg;base64,${base64Image}" alt="Logo" class="w-1/3 max-w-[800px]" />
       </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Width (cm)</th>
-            <th>Length (cm)</th>
-            <th>Height (cm)</th>
-            <th>Weight (kg)</th>
+      <!-- ข้อมูลผู้ส่งและผู้รับ -->
+      <div class="flex justify-between w-full text-[5rem] font-medium text-gray-800 mb-6 mt-44">
+        <p><strong>จาก:</strong> ${fromValue}</p>
+        <p><strong>ถึง:</strong> ${mainParcel.branch}</p>
+      </div>
+
+      <!-- รหัสพัสดุ -->
+      <p class="text-[7rem] font-semibold text-gray-900 my-20">
+        ${mainParcel.id_parcel}
+      </p>
+
+      <!-- ตารางข้อมูลพัสดุ -->
+      <table class="table-auto w-full text-6xl mt-[100px] border border-gray-500 rounded-lg overflow-hidden">
+        <thead class="bg-gray-300 text-gray-800">
+          <tr>  
+            <th class="py-12 px-6 text-center">Width (cm)</th>
+            <th class="py-12 px-6 text-center">Length (cm)</th>
+            <th class="py-12 px-6 text-center">Height (cm)</th>
+            <th class="py-12 px-6 text-center">Weight (kg)</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>${detail.width}</td>
-            <td>${detail.length}</td>
-            <td>${detail.height}</td>
-            <td>${detail.weight}</td>
+          <tr class="even:bg-gray-100 odd:bg-white">
+            <td class="py-14 px-6 text-center">${detail.width}</td>
+            <td class="py-14 px-6 text-center">${detail.length}</td>
+            <td class="py-14 px-6 text-center">${detail.height}</td>
+            <td class="py-14 px-6 text-center">${detail.weight}</td>
           </tr>
         </tbody>
       </table>
 
-      <div class="footer">
-        <p style="text-align: end"><strong>จำนวน:</strong> ${detail.amount}</p>
-        <p style="text-align: end">
-          <strong>ราคารวม :</strong> ${detail.price} LAK
-        </p>
+      <!-- จำนวนและราคารวม -->
+      <div class="w-full mt-[10vh] text-right text-[5rem] font-medium text-gray-900">
+        <p class="mb-4"><strong>จำนวน:</strong> ${detail.amount}</p>
+        <p><strong>ราคารวม:</strong> ${detail.price} LAK</p>
       </div>
+            <footer class="w-full text-6xl mt-[100px] border border-gray-500 rounded-lg p-14">
+        <p class="font-semibold mb-14">หมายเหตุ :</p>
+      ${mainParcel.note}
+      </footer>
     </div>
   </body>
-</html>
-
-          `;
+</html>`;
 
         const browser = await puppeteer.launch({ headless: true });
         const page = await browser.newPage();
@@ -836,6 +760,7 @@ exports.searchParcel = async (req, res) => {
         id_parcel,
         branch: username,
         status: "201",
+        type: "delivery",
       },
     });
 
@@ -859,6 +784,7 @@ exports.searchSuccessParcel = async (req, res) => {
         id_parcel,
         branch: username,
         status: "202",
+        type: "delivery",
       },
     });
     if (!parcelId) {
@@ -932,9 +858,9 @@ exports.checkStatus = async (req, res) => {
       where: { id_parcel },
     });
 
-    const branch = await ParcelDetail.findOne({
-      where: { id_parcel },
-    });
+    // const branch = await ParcelDetail.findOne({
+    //   where: { id_parcel },
+    // });
 
     if (!status) {
       return res
@@ -942,38 +868,37 @@ exports.checkStatus = async (req, res) => {
         .json({ message: "No status found for this parcel ID." });
     }
 
-    if (!branch) {
-      return res
-        .status(404)
-        .json({ message: "No branch found for this parcel ID." });
-    }
+    // if (!branch) {
+    //   return res
+    //     .status(404)
+    //     .json({ message: "No branch found for this parcel ID." });
+    // }
 
-    // ตรวจสอบข้อมูลในแต่ละคอลัมน์จาก origin ถึง success
     const result = {};
 
     if (status.origin) {
-      result.origin = status.origin; // แสดงผล origin ถ้ามีข้อมูล
+      result.origin = status.origin;
     }
     if (status.export) {
-      result.export = status.export; // แสดงผล export ถ้ามีข้อมูล
+      result.export = status.export;
     }
     if (status.acceptorigin) {
-      result.acceptorigin = status.acceptorigin; // แสดงผล acceptorigin ถ้ามีข้อมูล
+      result.acceptorigin = status.acceptorigin;
     }
     if (status.spread) {
-      result.spread = status.spread; // แสดงผล spread ถ้ามีข้อมูล
+      result.spread = status.spread;
     }
-    if (status.branch) {
-      result.branch = status.branch; // แสดงผล branch ถ้ามีข้อมูล
-    }
+    // if (status.branch) {
+    //   result.branch = status.branch;
+    // }
     if (status.success) {
-      result.success = status.success; // แสดงผล success ถ้ามีข้อมูล
+      result.success = status.success;
     }
 
     res.status(200).json({
       id_parcel: status.id_parcel,
       status: result,
-      branch: branch.branch,
+      // branch: branch.branch,
     });
   } catch (error) {
     res.status(500).json({ message: "Error checking status", error });

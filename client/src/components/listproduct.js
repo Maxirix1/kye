@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import useAuth from "../hooks/useAuth";
+// import useAuth from "../hooks/useAuth";
 
 const Listproduct = () => {
   const [products, setProducts] = useState();
@@ -13,7 +13,7 @@ const Listproduct = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/listproduct",
+          "http://maxirix.thddns.net:7377/api/listproduct",
           { to: storedBranch }
         );
         setProducts(response.data);
@@ -28,7 +28,7 @@ const Listproduct = () => {
     const fetchOrigin = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/listOrigin",
+          "http://maxirix.thddns.net:7377/api/listOrigin",
           { from: storedBranch }
         );
         setProductsOrigin(response.data);
@@ -53,7 +53,7 @@ const Listproduct = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/parcel/update",
+        "http://maxirix.thddns.net:7377/api/parcel/update",
         updateParcel
       );
 
@@ -75,7 +75,7 @@ const Listproduct = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/parcel/save",
+        "http://maxirix.thddns.net:7377/api/parcel/save",
         dataToSave
       );
 
@@ -101,14 +101,13 @@ const Listproduct = () => {
   const [error, setError] = useState("");
 
   const handleSeachPaste = async (e) => {
-    const pasted = e.clipboardData.getData("Text");
+    const pasted = e.clipboardData.getData("Text").trim();
     setFindParcel(pasted);
     setParcels([]);
-
     if (pasted.length >= 5) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcel/searchwarehouse",
+          "http://maxirix.thddns.net:7377/api/parcel/searchwarehouse",
           {
             id_parcel: pasted,
           }
@@ -136,7 +135,9 @@ const Listproduct = () => {
               type="text"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  const parcel = products.find((item) => item.id_parcel === findParcel);
+                  const parcel = products.find(
+                    (item) => item.id_parcel === findParcel
+                  );
                   if (parcel) {
                     handleAccept(parcel);
                   } else {
@@ -200,6 +201,10 @@ const Listproduct = () => {
             <table className="w-full leading-normal">
               <thead>
                 <tr>
+                  {/* เพิ่มหัวข้อคอลัมน์ "No." */}
+                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    No.
+                  </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                     ID
                   </th>
@@ -215,69 +220,95 @@ const Listproduct = () => {
                 </tr>
               </thead>
               <tbody>
-                {parcelResponse ? (
-                  <tr className="bg-green-200">
-                    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        {parcelResponse.id_parcel}
-                      </p>
-                    </td>
-                    <td className="text-center px-5 py-5 border-b border-gray-200 text-sm">
-                      <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                        <span
-                          aria-hidden
-                          className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                        ></span>
-                        {parcelResponse.status}
-                      </span>
-                    </td>
-                    <td className="text-end px-5 py-5 border-b border-gray-200 text-sm">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        {parcelResponse.from}
-                      </p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 text-sm text-end">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        {parcelResponse.time}
-                      </p>
-                    </td>
-                  </tr>
-                ) : (
-                  (storedBranch === "LAO Warehouse"
-                    ? products
-                    : productsOrigin
-                  )?.map((product) => (
-                    <tr
-                      key={product.id_parcel}
-                      className="hover:bg-gray-100 bg-white"
-                    >
-                      <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          {product.id_parcel}
-                        </p>
-                      </td>
-                      <td className="text-center px-5 py-5 border-b border-gray-200 text-sm">
-                        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                          <span
-                            aria-hidden
-                            className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                          ></span>
-                          {product.status}
-                        </span>
-                      </td>
-                      <td className="text-end px-5 py-5 border-b border-gray-200 text-sm">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          {product.from}
-                        </p>
-                      </td>
-                      <td className="px-5 py-5 border-b border-gray-200 text-sm text-end">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          {product.time}
-                        </p>
-                      </td>
-                    </tr>
-                  ))
-                )}
+                {parcelResponse
+                  ? (() => {
+                      // ค้นหา index ของ parcelResponse ใน products หรือ productsOrigin
+                      const dataList =
+                        storedBranch === "LAO Warehouse"
+                          ? products
+                          : productsOrigin;
+                      const index = dataList.findIndex(
+                        (product) =>
+                          product.id_parcel === parcelResponse.id_parcel
+                      );
+
+                      return (
+                        <tr className="bg-green-200">
+                          {/* แสดงลำดับที่ตามตำแหน่งใน dataList */}
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            {index + 1}
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {parcelResponse.id_parcel}
+                            </p>
+                          </td>
+                          <td className="text-center px-5 py-5 border-b border-gray-200 text-sm">
+                            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                              <span
+                                aria-hidden
+                                className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                              ></span>
+                              {parcelResponse.status ? (
+                                <p>ລໍຖ້າສາງເພື່ອຮັບສິນຄ້າ</p>
+                              ) : null}
+                            </span>
+                          </td>
+                          <td className="text-end px-5 py-5 border-b border-gray-200 text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {parcelResponse.from}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm text-end">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {parcelResponse.time}
+                            </p>
+                          </td>
+                        </tr>
+                      );
+                    })()
+                  : (storedBranch === "LAO Warehouse"
+                      ? products
+                      : productsOrigin
+                    )?.map((product, index) => (
+                      <tr
+                        key={product.id_parcel}
+                        className="hover:bg-gray-100 bg-white"
+                      >
+                        {/* เพิ่ม Column แสดงลำดับโดยใช้ index */}
+                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {index + 1}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {product.id_parcel}
+                          </p>
+                        </td>
+                        <td className="text-center px-5 py-5 border-b border-gray-200 text-sm">
+                          <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                            <span
+                              aria-hidden
+                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                            ></span>
+                            {product.status ? (
+                              <p>ລໍຖ້າສາງເພື່ອຮັບສິນຄ້າ</p>
+                            ) : null}
+                          </span>
+                        </td>
+                        <td className="text-end px-5 py-5 border-b border-gray-200 text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {product.from}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 text-sm text-end">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {product.time}
+                          </p>
+                        </td>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           </div>

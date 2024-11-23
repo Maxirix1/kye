@@ -7,7 +7,6 @@
     "start": "react-scripts start --host 0.0.0.0",  
     "dev": "nodemon index.js"
   },
-  "proxy": "http://maxirix.thddns.net:7377",
   "keywords": [],
   "author": "",
   "license": "ISC",

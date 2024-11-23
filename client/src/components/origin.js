@@ -171,8 +171,8 @@ const Origin = ({ onParcelChange }) => {
                 <option value="" disabled>
                   เลือกสาขา
                 </option>
-                <option value="branch01">Branch 1</option>
-                <option value="branch02">Branch 2</option>
+                <option value="kye02">KYE02 (ສາຂາ ເພຍວັດ) ນະຄອນຫຼວງ</option>
+                <option value="kye50">KYE50 (ສາຂາ ສ້າງເຫວີຍ) ຫຼວງພະບາງ</option>
               </select>
             </div>
           </div>

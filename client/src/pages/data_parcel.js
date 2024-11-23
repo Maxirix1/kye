@@ -8,20 +8,20 @@ import Correct from "../assets/correct.png";
 function Data_parcel() {
   const { id } = useParams();
   const [result, setResult] = useState(null);
-  const [branch, setBranch] = useState(null);
+  // const [branch, setBranch] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const checkStatus = async () => {
       try {
         const responseStatus = await axios.post(
-          "http://localhost:5000/api/checkstatus",
+          "http://maxirix.thddns.net:7377/api/checkstatus",
           {
             id_parcel: id,
           }
         );
         setResult(responseStatus.data.status);
-        setBranch(responseStatus.data.branch);
+        // setBranch(responseStatus.data.branch);
       } catch (error) {
         console.error("Error checking ID Parcel:", error);
         setError("Failed to fetch data. Please try again later.");
@@ -58,9 +58,9 @@ function Data_parcel() {
               {result.spread && (
                 <div className="statusTime">{result.spread}</div>
               )}
-              {result.branch && (
+              {/* {result.branch && (
                 <div className="statusTime">{result.branch}</div>
-              )}
+              )} */}
               {result.success && (
                 <div className="statusTime">{result.success}</div>
               )}
@@ -89,11 +89,11 @@ function Data_parcel() {
                   <img src={Correct} alt="correct" />
                 </div>
               )}
-              {result.branch && (
+              {/* {result.branch && (
                 <div className="statusItem">
                   <img src={Correct} alt="correct" />
                 </div>
-              )}
+              )} */}
               {result.success && (
                 <div className="statusItem">
                   <img src={Correct} alt="correct" />
@@ -115,7 +115,7 @@ function Data_parcel() {
                   <path
                     stroke="currentColor"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                     d="M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                   />
                 </svg>
@@ -138,7 +138,7 @@ function Data_parcel() {
                       d="M19.3074 7.63582C19.3074 7.63582 20.4246 5.92462 19.364 4.86396C18.3033 3.8033 16.5921 4.92053 16.5921 4.92053L13.0566 8.45606L5.45753 6.04247L3.57191 7.92809L9.75674 11.7559L7.87112 13.6415L4.40158 13.9432L3.69448 14.6503L7.34315 16.8848L9.60589 20.5617L10.313 19.8546L10.5864 16.3568L12.472 14.4712L16.2998 20.656L18.1854 18.7704L15.7719 11.1714L19.3074 7.63582Z"
                       stroke="#000000"
                       stroke-linejoin="round"
-                      stroke-width="1.7"
+                      strokeWidth="1.7"
                     />
                   </g>
                   <defs>
@@ -162,7 +162,7 @@ function Data_parcel() {
                   <path
                     d="M7 14.0014H17M7 14.0014V11.6014C7 11.0413 7 10.7613 7.10899 10.5474C7.20487 10.3592 7.35785 10.2062 7.54601 10.1104C7.75992 10.0014 8.03995 10.0014 8.6 10.0014H15.4C15.9601 10.0014 16.2401 10.0014 16.454 10.1104C16.6422 10.2062 16.7951 10.3592 16.891 10.5474C17 10.7613 17 11.0413 17 11.6014V14.0014M7 14.0014V18.0014V21.0014M17 14.0014V18.0014V21.0014M18.3466 6.17468L14.1466 4.07468C13.3595 3.68113 12.966 3.48436 12.5532 3.40691C12.1876 3.33832 11.8124 3.33832 11.4468 3.40691C11.034 3.48436 10.6405 3.68113 9.85338 4.07468L5.65337 6.17468C4.69019 6.65627 4.2086 6.89707 3.85675 7.25631C3.5456 7.574 3.30896 7.95688 3.16396 8.37725C3 8.85262 3 9.39106 3 10.4679V19.4014C3 19.9614 3 20.2414 3.10899 20.4554C3.20487 20.6435 3.35785 20.7965 3.54601 20.8924C3.75992 21.0014 4.03995 21.0014 4.6 21.0014H19.4C19.9601 21.0014 20.2401 21.0014 20.454 20.8924C20.6422 20.7965 20.7951 20.6435 20.891 20.4554C21 20.2414 21 19.9614 21 19.4014V10.4679C21 9.39106 21 8.85262 20.836 8.37725C20.691 7.95688 20.4544 7.574 20.1433 7.25631C19.7914 6.89707 19.3098 6.65627 18.3466 6.17468Z"
                     stroke="#000000"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
@@ -184,7 +184,7 @@ function Data_parcel() {
                     clip-rule="evenodd"
                     d="M8.52832 16.826C8.53464 17.7132 8.01843 18.5166 7.22106 18.8607C6.42369 19.2047 5.50274 19.0213 4.88882 18.3962C4.27491 17.7712 4.08935 16.828 4.41891 16.0077C4.74847 15.1873 5.52803 14.652 6.39307 14.652C6.95731 14.6499 7.49925 14.8777 7.89969 15.2854C8.30013 15.6931 8.52625 16.2473 8.52832 16.826V16.826Z"
                     stroke="#000000"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
@@ -193,7 +193,7 @@ function Data_parcel() {
                     clip-rule="evenodd"
                     d="M18.7015 16.826C18.7078 17.7132 18.1916 18.5166 17.3942 18.8607C16.5969 19.2047 15.6759 19.0213 15.062 18.3962C14.4481 17.7712 14.2625 16.828 14.5921 16.0077C14.9216 15.1873 15.7012 14.652 16.5662 14.652C17.1305 14.6499 17.6724 14.8777 18.0728 15.2854C18.4733 15.6931 18.6994 16.2473 18.7015 16.826Z"
                     stroke="#000000"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
@@ -202,7 +202,8 @@ function Data_parcel() {
                     fill="#000000"
                   />
                 </svg>
-                <strong>พัสดุกำลังจัดส่งไป {branch}</strong>
+                {/* <strong>พัสดุกำลังจัดส่งไป {branch}</strong> */}
+                <strong>พัสดุกำลังจัดส่งไป</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -217,12 +218,13 @@ function Data_parcel() {
                   <path
                     d="M7 14.0014H17M7 14.0014V11.6014C7 11.0413 7 10.7613 7.10899 10.5474C7.20487 10.3592 7.35785 10.2062 7.54601 10.1104C7.75992 10.0014 8.03995 10.0014 8.6 10.0014H15.4C15.9601 10.0014 16.2401 10.0014 16.454 10.1104C16.6422 10.2062 16.7951 10.3592 16.891 10.5474C17 10.7613 17 11.0413 17 11.6014V14.0014M7 14.0014V18.0014V21.0014M17 14.0014V18.0014V21.0014M18.3466 6.17468L14.1466 4.07468C13.3595 3.68113 12.966 3.48436 12.5532 3.40691C12.1876 3.33832 11.8124 3.33832 11.4468 3.40691C11.034 3.48436 10.6405 3.68113 9.85338 4.07468L5.65337 6.17468C4.69019 6.65627 4.2086 6.89707 3.85675 7.25631C3.5456 7.574 3.30896 7.95688 3.16396 8.37725C3 8.85262 3 9.39106 3 10.4679V19.4014C3 19.9614 3 20.2414 3.10899 20.4554C3.20487 20.6435 3.35785 20.7965 3.54601 20.8924C3.75992 21.0014 4.03995 21.0014 4.6 21.0014H19.4C19.9601 21.0014 20.2401 21.0014 20.454 20.8924C20.6422 20.7965 20.7951 20.6435 20.891 20.4554C21 20.2414 21 19.9614 21 19.4014V10.4679C21 9.39106 21 8.85262 20.836 8.37725C20.691 7.95688 20.4544 7.574 20.1433 7.25631C19.7914 6.89707 19.3098 6.65627 18.3466 6.17468Z"
                     stroke="#000000"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                 </svg>
-                <strong>พัสดุถึง {branch} แล้ว</strong>
+                {/* <strong>พัสดุถึง {branch} แล้ว</strong> */}
+                <strong>พัสดุถึง แล้ว</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -243,7 +245,8 @@ function Data_parcel() {
                     fill="#0F0F0F"
                   />
                 </svg>
-                <strong>จัดส่งสินค้าเรียบร้อย<br/>ลูกค้ารับพัสดุที่ {branch}</strong>
+                {/* <strong>จัดส่งสินค้าเรียบร้อย<br/>ลูกค้ารับพัสดุที่ {branch}</strong> */}
+                <strong>จัดส่งสินค้าเรียบร้อย<br/>ลูกค้ารับพัสดุที่</strong>
               </div>
             </div>
           </div>

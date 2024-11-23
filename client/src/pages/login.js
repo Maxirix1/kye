@@ -29,8 +29,9 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/login",
-        formLogin
+        "http://maxirix.thddns.net:7377/api/login",
+        formLogin,
+        { withCredentials: true }
       );
       console.log(response.data);
 
@@ -38,7 +39,7 @@ function Login() {
         response.data.token &&
         response.data.username &&
         response.data.role &&
-        response.data.branch 
+        response.data.branch
         // response.data.credit
       ) {
         localStorage.setItem("token", response.data.token);
