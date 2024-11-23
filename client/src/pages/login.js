@@ -156,10 +156,10 @@ function Login() {
               <a href="/">| About</a>
             </li>
             <li>
-              <a href="/">| ติดตามพัสดุ</a>
+              <a href="/">| ຕິດຕາມພັດດຸ</a>
             </li>
             <li>
-              <a href="/">| คำนวณค่าขนส่ง</a>
+              <a href="/">| ຄິດໄລ່ຄ່າຂົນສົ່ງ</a>
             </li>
           </ul>
         </div>

@@ -92,7 +92,7 @@ const InventoryDashboard = () => {
             marginBottom: "20px",
           }}
         >
-          <h2 style={{ fontSize: "24px", margin: 0 }}>การจัดการ</h2>
+          <h2 style={{ fontSize: "24px", margin: 0 }}>ການຈັດການ</h2>
           {isMobile && (
             <button
               onClick={toggleSidebar}
@@ -117,7 +117,7 @@ const InventoryDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            หน้าแรก
+            ໜ້າແຮກ
           </Link>
           <Link
             to="/homeAdmin/list"
@@ -127,7 +127,7 @@ const InventoryDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            รายการพัสดุ
+            ລາຍການພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/distribution"
@@ -137,7 +137,7 @@ const InventoryDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            กระจายพัสดุ
+            ກະຈາຍພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/branch"
@@ -147,7 +147,7 @@ const InventoryDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            ข้อมูลสาขา
+            ຂໍ້ມູນສາຂາ
           </Link>
         </nav>
         <button
@@ -194,7 +194,7 @@ const InventoryDashboard = () => {
                 ☰
               </button>
             )}
-            <h1 style={{ fontSize: "24px", margin: "0" }}>รายการพัสดุ</h1>
+            <h1 style={{ fontSize: "24px", margin: "0" }}>ລາຍການພັດດຸ</h1>
           </div>
           {!isMobile && (
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -224,7 +224,7 @@ const InventoryDashboard = () => {
                   cursor: "pointer",
                 }}
               >
-                หน้าเเรก
+                ໜ້າເເຣກ
               </Link>
             </div>
           )}

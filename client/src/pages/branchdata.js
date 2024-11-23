@@ -120,7 +120,7 @@ const BranchDashboard = () => {
             marginBottom: "20px",
           }}
         >
-          <h2 style={{ fontSize: "24px", margin: 0 }}>การจัดการ</h2>
+          <h2 style={{ fontSize: "24px", margin: 0 }}>ການຈັດການ</h2>
           {isMobile && (
             <button
               onClick={toggleSidebar}
@@ -145,7 +145,7 @@ const BranchDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            หน้าแรก
+            ໜ້າແຮກ
           </Link>
           <Link
             to="/homeAdmin/list"
@@ -155,7 +155,7 @@ const BranchDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            รายการพัสดุ
+            ລາຍການພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/distribution"
@@ -165,7 +165,7 @@ const BranchDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            กระจายพัสดุ
+            ກະຈາຍພັດດຸ
           </Link>
           <Link
             to="/homeAdmin/branch"
@@ -175,7 +175,7 @@ const BranchDashboard = () => {
               isMobile && toggleSidebar();
             }}
           >
-            ข้อมูลสาขา
+            ຂໍ້ມູນສາຂາ
           </Link>
         </nav>
         <button
@@ -222,7 +222,7 @@ const BranchDashboard = () => {
                 ☰
               </button>
             )}
-            <h1 style={{ fontSize: "24px", margin: "0" }}>ข้อมูลสาขา</h1>
+            <h1 style={{ fontSize: "24px", margin: "0" }}>ຂໍ້ມູນສາຂາ</h1>
           </div>
           {!isMobile && (
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -252,7 +252,7 @@ const BranchDashboard = () => {
                   cursor: "pointer",
                 }}
               >
-                หน้าเเรก
+                ໜ້າເເຣກ
               </Link>
             </div>
           )}

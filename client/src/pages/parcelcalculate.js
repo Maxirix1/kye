@@ -97,49 +97,49 @@ const Parcel = ({ onDetailsChange }) => {
         name="typeParcel"
         value={detailsData.typeParcel}
         onChange={handleInputChange}
-        placeholder="ประเภทพัสดุ"
+        placeholder="ປະເພດພັດດຸ"
       />
       <input
         type="number"
         name="weight"
         value={detailsData.weight}
         onChange={handleInputChange}
-        placeholder="น้ำหนัก (kg)"
+        placeholder="ນ້ຳໜັກ (kg)"
       />
       <input
         type="number"
         name="width"
         value={detailsData.width}
         onChange={handleInputChange}
-        placeholder="ความกว้าง (cm)"
+        placeholder="ຄວາມກວ້າງ (cm)"
       />
       <input
         type="number"
         name="length"
         value={detailsData.length}
         onChange={handleInputChange}
-        placeholder="ความยาว (cm)"
+        placeholder="ຄວາມຍາວ (cm)"
       />
       <input
         type="number"
         name="height"
         value={detailsData.height}
         onChange={handleInputChange}
-        placeholder="ความสูง (cm)"
+        placeholder="ຄວາມສູງ (cm)"
       />
       <input
         type="number"
         name="amount"
         value={detailsData.amount}
         onChange={handleInputChange}
-        placeholder="จำนวนพัสดุ"
+        placeholder="ຈຳນວນພັດດຸ"
       />
       <input
         type="text"
         name="price"
         value={detailsData.price}
         onChange={handlePriceChange}
-        placeholder="ราคาคำนวณ (บาท)"
+        placeholder="ລາຄາຄິດໄລ່ (ບາດ)"
       />
     </div>
   );

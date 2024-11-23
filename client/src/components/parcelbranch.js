@@ -99,7 +99,7 @@ const ParcelBranch = () => {
     <div className="flex items-center justify-center flex-col">
       <div className="bg-[#732dcf] px-6 py-4 pb-6 rounded-lg w-full xl:w-[70%] mb-10">
         <h1 style={{ fontSize: "16px", margin: "0", color: "#fff" }}>
-        ຄົ້ນຫາສໍາລັບລາຍການ parcel
+        ຄົ້ນຫາລາຍການພັດດຸ
         </h1>
 
         <div className="flex mt-2 gap-2">

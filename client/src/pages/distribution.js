@@ -86,8 +86,8 @@ const DistributionDashboard = ({ onDetailsChange }) => {
 
     if (checkEmptyFields || checkEmptyParcel) {
       Swal.fire({
-        title: "ข้อมูลไม่ครบถ้วน",
-        text: "กรุณากรอกข้อมูลทุกช่องให้ครบถ้วน",
+        title: "ຂໍ້ມູນບໍ່ຄົບຖ້ວນ",
+        text: "ກະລຸນາຕື່ມຂໍ້ມູນໃສ່ທຸກຊ່ອງໃຫ້ຄົບຖ້ວນ.",
         icon: "info",
       });
       return;
@@ -107,8 +107,8 @@ const DistributionDashboard = ({ onDetailsChange }) => {
 
       if (userCredit < detailsData.price) {
         Swal.fire({
-          title: "ไม่เพียงพอ",
-          text: `ยอดเครดิตในสาขา ${parcelData.branch} ไม่พอ กรุณาตรวจสอบอีกครั้ง`,
+          title: "ບໍ່ພຽງພໍ",
+          text: `ຍອດສິນເຊື່ອໃນສາຂາ ${parcelData.branch} ບໍ່ພຽງພໍບໍ?`,
           icon: "error",
         });
         setLoading(false); // ปิดการโหลด
@@ -129,8 +129,8 @@ const DistributionDashboard = ({ onDetailsChange }) => {
       if (response.status === 200) {
         console.log("Data Save Successfully:", response.data);
         Swal.fire({
-          title: "สำเร็จ",
-          text: "ข้อมูลพัสดุได้ถูกบันทึกเรียบร้อยแล้ว",
+          title: "ສໍາເລັດ",
+          text: "ຂໍ້ມູນ parcel ໄດ້ຖືກບັນທຶກໄວ້.",
           icon: "success",
         });
         window.location.reload();
@@ -138,8 +138,8 @@ const DistributionDashboard = ({ onDetailsChange }) => {
     } catch (error) {
       console.log("Error Save data | Try again", error);
       Swal.fire({
-        title: "ไม่พบพัสดุ",
-        text: "โปรดรับพัสดุเข้าโกดัง | หรือติดต่อเจ้าหน้าที่",
+        title: "ບໍ່ພົບພັດສະດຸ",
+        text: "ກະລຸນາຮັບເຄື່ອງໃນສາງ. | ຫຼືຕິດຕໍ່ພະນັກງານ",
         icon: "error",
       });
     } finally {
@@ -325,7 +325,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
             marginBottom: "20px",
           }}
         >
-          <h2 style={{ fontSize: "24px", margin: 0 }}>การจัดการ</h2>
+          <h2 style={{ fontSize: "24px", margin: 0 }}>ການຈັດການ</h2>
           {isMobile && (
             <button
               onClick={toggleSidebar}
@@ -427,7 +427,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                 ☰
               </button>
             )}
-            <h1 style={{ fontSize: "24px", margin: "0" }}>การกระจายพัสดุ</h1>
+            <h1 style={{ fontSize: "24px", margin: "0" }}>ການກະຈາຍພັດດຸ</h1>
           </div>
           {!isMobile && (
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -457,7 +457,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                   cursor: "pointer",
                 }}
               >
-                หน้าเเรก
+                ໜ້າເເຣກ
               </Link>
             </div>
           )}
@@ -479,7 +479,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                   }}
                 >
                   <div style={gradientHeaderStyle("#0031e0", "#0ad5f5")}>
-                    <h2 style={{ margin: 0, color: "white" }}>ข้อมูลพัสดุ</h2>
+                    <h2 style={{ margin: 0, color: "white" }}>ຂໍ້ມູນພັດດຸ</h2>
                   </div>
                   <div style={bodyStyle}>
                     <div
@@ -491,7 +491,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                       }}
                     >
                       <div>
-                        <label style={labelStyle}>ประเภท :</label>
+                        <label style={labelStyle}>ປະເພດ :</label>
                         <select
                           style={inputStyle}
                           onChange={handleInputChange}
@@ -499,7 +499,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                           name="typeParcel"
                         >
                           <option value="" disabled>
-                            เลือกประเภท
+                          ເລືອກປະເພດ
                           </option>
                           <option value="O"> O </option>
                           <option value="A"> A </option>
@@ -512,24 +512,24 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                           <option value="G"> G</option>
                           <option value="H"> H</option>
                           <option value="I"> I</option>
-                          <option value="Genaral"> เครื่องใช้ทั่วไป</option>
-                          <option value="Electrical"> เครื่องใช้ไฟฟ้า</option>
+                          <option value="Genaral"> ເຄື່ອງໃຊ້ທົ່ວໄປ</option>
+                          <option value="Electrical"> ເຄື່ອງໃຊ້ໄຟຟ້າ</option>
                           <option value="Big-But-Light">
                             {" "}
-                            เครื่องใหญ่น้ำหนักเบา
+                            ເຄື່ອງໃຫຍ່ນ້ຳໜັກເບົາ
                           </option>
-                          <option value="Lots-of-Weight"> น้ำหนักเยอะ</option>
+                          <option value="Lots-of-Weight"> ນ້ຳໜັກເຢິ</option>
                         </select>
                       </div>
                       <div>
-                        <label style={labelStyle}>ขนาด(cm) :</label>
+                        <label style={labelStyle}>ຂະໜາດ(cm) :</label>
                         <div style={{ display: "flex", gap: "5px" }}>
                           <input
                             name="width"
                             type="number"
                             onChange={handleInputChange}
                             value={detailsData.width}
-                            placeholder="กว้าง"
+                            placeholder="ກວ້າງ"
                             style={{ ...inputStyle, flex: 1 }}
                           />
                           <input
@@ -537,7 +537,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                             type="number"
                             onChange={handleInputChange}
                             value={detailsData.length}
-                            placeholder="ยาว"
+                            placeholder="ຍາວ"
                             style={{ ...inputStyle, flex: 1 }}
                           />
                           <input
@@ -545,42 +545,42 @@ const DistributionDashboard = ({ onDetailsChange }) => {
                             type="number"
                             onChange={handleInputChange}
                             value={detailsData.height}
-                            placeholder="สูง"
+                            placeholder="ສູງ"
                             style={{ ...inputStyle, flex: 1 }}
                           />
                         </div>
                       </div>
                       <div>
-                        <label style={labelStyle}>น้ำหนัก(kg) :</label>
+                        <label style={labelStyle}>ນ້ຳໜັກ(kg) :</label>
                         <input
                           name="weight"
                           type="number"
                           onChange={handleInputChange}
                           value={detailsData.weight}
-                          placeholder="น้ำหนัก"
+                          placeholder="ນ້ຳໜັກ"
                           style={inputStyle}
                         />
                       </div>
                       <div>
-                        <label style={labelStyle}>จำนวน :</label>
+                        <label style={labelStyle}>ຈຳນວນ :</label>
                         <input
                           name="amount"
                           type="number"
                           onChange={handleInputChange}
                           value={detailsData.amount}
-                          placeholder="จำนวน(ชิ้น)"
+                          placeholder="ຈຳນວນ(ຊິ້ນ)"
                           style={inputStyle}
                         />
                       </div>
                       <div>
-                        <label style={labelStyle}>ราคา :</label>
+                        <label style={labelStyle}>ລາຄາ :</label>
                         <input
                           name="price"
                           type="number"
                           onChange={handlePriceChange}
                           // onBlur={calculatePrice}
                           value={detailsData.price}
-                          placeholder="ราคา"
+                          placeholder="ລາຄາ"
                           style={inputStyle}
                         />
                       </div>
