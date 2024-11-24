@@ -13,7 +13,7 @@ const Listproduct = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/listproduct",
+          "http://kye.maxirix.com/api/listproduct",
           { to: storedBranch }
         );
         setProducts(response.data);
@@ -28,7 +28,7 @@ const Listproduct = () => {
     const fetchOrigin = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/listOrigin",
+          "http://kye.maxirix.com/api/listOrigin",
           { from: storedBranch }
         );
         setProductsOrigin(response.data);
@@ -53,7 +53,7 @@ const Listproduct = () => {
 
     try {
       const response = await axios.post(
-        "http://147.50.228.115:5000/api/parcel/update",
+        "http://kye.maxirix.com/api/parcel/update",
         updateParcel
       );
 
@@ -75,7 +75,7 @@ const Listproduct = () => {
 
     try {
       const response = await axios.post(
-        "http://147.50.228.115:5000/api/parcel/save",
+        "http://kye.maxirix.com/api/parcel/save",
         dataToSave
       );
 
@@ -107,7 +107,7 @@ const Listproduct = () => {
     if (pasted.length >= 5) {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/parcel/searchwarehouse",
+          "http://kye.maxirix.com/api/parcel/searchwarehouse",
           {
             id_parcel: pasted,
           }

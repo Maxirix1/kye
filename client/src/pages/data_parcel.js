@@ -15,7 +15,7 @@ function Data_parcel() {
     const checkStatus = async () => {
       try {
         const responseStatus = await axios.post(
-          "http://147.50.228.115:5000/api/checkstatus",
+          "http://kye.maxirix.com/api/checkstatus",
           {
             id_parcel: id,
           }

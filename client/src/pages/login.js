@@ -29,7 +29,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://147.50.228.115:5000/api/login",
+        "http://kye.maxirix.com/api/login",
         formLogin,
         { withCredentials: true }
       );

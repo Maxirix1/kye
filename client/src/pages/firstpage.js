@@ -22,7 +22,7 @@ const InventoryStatistics = () => {
     const countParcels = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/parcels/count",
+          "http://kye.maxirix.com/api/parcels/count",
           { from: storedBranch }
         );
         setTotalParcels(response.data.total);
@@ -37,7 +37,7 @@ const InventoryStatistics = () => {
     const countParcelsLao = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/parcels/countwarehouse"
+          "http://kye.maxirix.com/api/parcels/countwarehouse"
         );
         setTotalParcelsLao(response.data.total);
       } catch (error) {
@@ -51,7 +51,7 @@ const InventoryStatistics = () => {
     const fetchCredit = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/credit",
+          "http://kye.maxirix.com/api/credit",
           {
             username,
           }
@@ -69,7 +69,7 @@ const InventoryStatistics = () => {
     const listParcel = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/listparcel"
+          "http://kye.maxirix.com/api/listparcel"
         );
         setListParcel(response.data);
       } catch (error) {
@@ -83,7 +83,7 @@ const InventoryStatistics = () => {
     const countParcelBranch = async () => {
       try {
         const response = await axios.post(
-          "http://147.50.228.115:5000/api/parcels/countbranch",
+          "http://kye.maxirix.com/api/parcels/countbranch",
           {
             username: username,
           }

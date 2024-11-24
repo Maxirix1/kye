@@ -8,7 +8,7 @@ const ParcelWaitSave = () => {
     const fetchParcels = async () => {
       try {
         const response = await axios.get(
-          "http://147.50.228.115:5000/api/parcelswait"
+          "http://kye.maxirix.com/api/parcelswait"
         );
         setParcels(response.data);
       } catch (error) {
@@ -26,7 +26,7 @@ const ParcelWaitSave = () => {
 
     try {
       const response = await axios.post(
-        "http://147.50.228.115:5000/api/parcel/updatebranch",
+        "http://kye.maxirix.com/api/parcel/updatebranch",
         updateStatus
       );
 
