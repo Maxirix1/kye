@@ -18,9 +18,12 @@ const Spread = () => {
   useEffect(() => {
     const fetchParcels = async () => {
       try {
-        const response = await axios.post("http://maxirix.thddns.net:7377/api/parcels", {
-          from: storedBranch,
-        });
+        const response = await axios.post(
+          "http://maxirix.thddns.net:7377/api/parcels",
+          {
+            from: storedBranch,
+          }
+        );
         setParcels(response.data);
       } catch (error) {
         console.error("Error fetch Data:", error);
@@ -98,9 +101,12 @@ const Spread = () => {
     console.log("Sending parcelIds:", parcelIds);
 
     try {
-      await axios.post("http://maxirix.thddns.net:7377/api/update-parcel-status", {
-        parcelIds: parcelIds,
-      });
+      await axios.post(
+        "http://maxirix.thddns.net:7377/api/update-parcel-status",
+        {
+          parcelIds: parcelIds,
+        }
+      );
 
       // อัปเดตสถานะของพัสดุ
       setParcels((prevParcels) =>
@@ -121,10 +127,10 @@ const Spread = () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if(inputRef.current) {
+    if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -174,13 +180,18 @@ const Spread = () => {
       <table className="mt-2 w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-300">
           <tr>
+            <th scope="col" className="px-6 py-3 w-32">
+              No
+            </th>
             <th scope="col" className="px-6 py-3">
               ID PARCEL
             </th>
             <th scope="col" className="px-6 py-3">
               TO
             </th>
-            <th>Send</th>
+            <th scope="col" className="px-6 py-3">
+              Send
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -189,12 +200,15 @@ const Spread = () => {
               .filter((parcel) => parcel.status === "origin")
               .map((parcel, index) => (
                 <tr className="bg-white border-b" key={parcel.id_parcel}>
+                  {/* แสดงลำดับ */}
+                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {index + 1}
+                  </td>
                   <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {parcel.id_parcel}
                   </td>
                   <td className="px-6 py-4 text-gray-900">{parcel.to}</td>
                   <td className="px-6 py-4 text-gray-900">
-                    
                     <input
                       type="checkbox"
                       checked={selectedParcels.has(parcel.id_parcel)}
@@ -214,6 +228,7 @@ const Spread = () => {
           )}
         </tbody>
       </table>
+
       <div className="flex items-end justify-end">
         <button
           onClick={handleSubmit}

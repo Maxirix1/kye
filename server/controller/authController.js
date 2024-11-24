@@ -849,7 +849,6 @@ exports.checkCredit = async (req, res) => {
     res.status(500).json({ message: "Error checking credit", error });
   }
 };
-
 exports.checkStatus = async (req, res) => {
   const { id_parcel } = req.body;
 
@@ -858,49 +857,46 @@ exports.checkStatus = async (req, res) => {
       where: { id_parcel },
     });
 
-    // const branch = await ParcelDetail.findOne({
-    //   where: { id_parcel },
-    // });
-
     if (!status) {
-      return res
-        .status(404)
-        .json({ message: "No status found for this parcel ID." });
+      return res.status(404).json({
+        message: "No status found for this parcel ID.",
+      });
     }
 
-    // if (!branch) {
-    //   return res
-    //     .status(404)
-    //     .json({ message: "No branch found for this parcel ID." });
-    // }
+    const requireBranch =
+      !!status.spread || !!status.branch || !!status.success;
+
+    let branchData = null;
+    if (requireBranch) {
+      const branch = await ParcelDetail.findOne({
+        where: { id_parcel },
+      });
+
+      if (!branch) {
+        return res.status(404).json({
+          message: "No branch found for this parcel ID.",
+        });
+      }
+      branchData = branch.branch;
+    }
 
     const result = {};
-
-    if (status.origin) {
-      result.origin = status.origin;
-    }
-    if (status.export) {
-      result.export = status.export;
-    }
-    if (status.acceptorigin) {
-      result.acceptorigin = status.acceptorigin;
-    }
-    if (status.spread) {
-      result.spread = status.spread;
-    }
-    // if (status.branch) {
-    //   result.branch = status.branch;
-    // }
-    if (status.success) {
-      result.success = status.success;
-    }
+    if (status.origin) result.origin = status.origin;
+    if (status.export) result.export = status.export;
+    if (status.acceptorigin) result.acceptorigin = status.acceptorigin;
+    if (status.spread) result.spread = status.spread;
+    if (status.branch) result.branch = status.branch;
+    if (status.success) result.success = status.success;
 
     res.status(200).json({
       id_parcel: status.id_parcel,
       status: result,
-      // branch: branch.branch,
+      branch: branchData,
     });
   } catch (error) {
-    res.status(500).json({ message: "Error checking status", error });
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Error checking status", error: error.message });
   }
 };

@@ -8,7 +8,7 @@ import Correct from "../assets/correct.png";
 function Data_parcel() {
   const { id } = useParams();
   const [result, setResult] = useState(null);
-  // const [branch, setBranch] = useState(null);
+  const [branch, setBranch] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Data_parcel() {
           }
         );
         setResult(responseStatus.data.status);
-        // setBranch(responseStatus.data.branch);
+        setBranch(responseStatus.data.branch);
       } catch (error) {
         console.error("Error checking ID Parcel:", error);
         setError("Failed to fetch data. Please try again later.");
@@ -58,9 +58,9 @@ function Data_parcel() {
               {result.spread && (
                 <div className="statusTime">{result.spread}</div>
               )}
-              {/* {result.branch && (
+              {result.branch && (
                 <div className="statusTime">{result.branch}</div>
-              )} */}
+              )}
               {result.success && (
                 <div className="statusTime">{result.success}</div>
               )}
@@ -89,11 +89,11 @@ function Data_parcel() {
                   <img src={Correct} alt="correct" />
                 </div>
               )}
-              {/* {result.branch && (
+              {result.branch && (
                 <div className="statusItem">
                   <img src={Correct} alt="correct" />
                 </div>
-              )} */}
+              )}
               {result.success && (
                 <div className="statusItem">
                   <img src={Correct} alt="correct" />
@@ -120,7 +120,7 @@ function Data_parcel() {
                   />
                 </svg>
 
-                <strong>ສາງໄດ້ຮັບສິນຄ້າແລ້ວ.</strong>
+                <strong>ສາງໄດ້ຮັບສິນຄ້າແລ້ວ</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -147,7 +147,7 @@ function Data_parcel() {
                     </clipPath>
                   </defs>
                 </svg>
-                <strong>ສິນຄ້າມີພ້ອມສົ່ງ ນະຄອນຫຼວງວຽງຈັນ.</strong>
+                <strong>ສີນຄ້າກຳລັງຖືກຈັດສົ່ງສູນຄັດແຍກປະເທດລາວ</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -167,7 +167,7 @@ function Data_parcel() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <strong>ເຄື່ອງມາຮອດວຽງຈັນແລ້ວ.</strong>
+                <strong>ສີນຄ້າມາຮອດສູນຄັດແຍກປະເທດລາວແລ້ວ</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -202,8 +202,7 @@ function Data_parcel() {
                     fill="#000000"
                   />
                 </svg>
-                {/* <strong>พัสดุกำลังจัดส่งไป {branch}</strong> */}
-                <strong>ພັດສະດຸກຳລັງຖືກຈັດສົ່ງ.</strong>
+                <strong>ສີນຄ້າກຳລັງຖືກຈັດສົ່ງ. {branch}</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -223,8 +222,7 @@ function Data_parcel() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                {/* <strong>พัสดุถึง {branch} แล้ว</strong> */}
-                <strong>ເຄື່ອງມາຮອດແລ້ວ.</strong>
+                <strong>ສີນຄ້າມາຮອດ{branch}ແລ້ວ</strong>
               </div>
               <div className="statusItem">
                 <svg
@@ -245,8 +243,7 @@ function Data_parcel() {
                     fill="#0F0F0F"
                   />
                 </svg>
-                {/* <strong>จัดส่งสินค้าเรียบร้อย<br/>ลูกค้ารับพัสดุที่ {branch}</strong> */}
-                <strong>ຜະລິດຕະພັນໄດ້ຖືກຈັດສົ່ງ.<br/>ລູກຄ້າໄດ້ຮັບຊຸດທີ່</strong>
+                <strong>ສີນຄ້າໄດ້ຖືກຈັດສົ່ງ.<br/>ລູກຄ້າໄດ້ຮັບທີ່ {branch}</strong>
               </div>
             </div>
           </div>
