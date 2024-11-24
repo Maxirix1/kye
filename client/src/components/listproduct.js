@@ -13,7 +13,7 @@ const Listproduct = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.post(
-          "http://maxirix.thddns.net:7377/api/listproduct",
+          "http://localhost:5000/api/listproduct",
           { to: storedBranch }
         );
         setProducts(response.data);
@@ -28,7 +28,7 @@ const Listproduct = () => {
     const fetchOrigin = async () => {
       try {
         const response = await axios.post(
-          "http://maxirix.thddns.net:7377/api/listOrigin",
+          "http://localhost:5000/api/listOrigin",
           { from: storedBranch }
         );
         setProductsOrigin(response.data);
@@ -53,7 +53,7 @@ const Listproduct = () => {
 
     try {
       const response = await axios.post(
-        "http://maxirix.thddns.net:7377/api/parcel/update",
+        "http://localhost:5000/api/parcel/update",
         updateParcel
       );
 
@@ -75,7 +75,7 @@ const Listproduct = () => {
 
     try {
       const response = await axios.post(
-        "http://maxirix.thddns.net:7377/api/parcel/save",
+        "http://localhost:5000/api/parcel/save",
         dataToSave
       );
 
@@ -107,7 +107,7 @@ const Listproduct = () => {
     if (pasted.length >= 5) {
       try {
         const response = await axios.post(
-          "http://maxirix.thddns.net:7377/api/parcel/searchwarehouse",
+          "http://localhost:5000/api/parcel/searchwarehouse",
           {
             id_parcel: pasted,
           }

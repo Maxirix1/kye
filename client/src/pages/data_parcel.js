@@ -15,7 +15,7 @@ function Data_parcel() {
     const checkStatus = async () => {
       try {
         const responseStatus = await axios.post(
-          "http://maxirix.thddns.net:7377/api/checkstatus",
+          "http://localhost:5000/api/checkstatus",
           {
             id_parcel: id,
           }

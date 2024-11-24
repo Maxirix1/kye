@@ -37,7 +37,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://maxirix.thddns.net:7377/api/signup", formSignup );
+        "http://localhost:5000/api/signup", formSignup );
       setMessage(response.data.message);
 
       if (response.status === 201) {

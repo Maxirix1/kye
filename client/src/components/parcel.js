@@ -30,7 +30,7 @@
 //   useEffect(() => {
 //     const fetchRate = async () => {
 //       try {
-//         const response = await axios.get("http://maxirix.thddns.net:7377/api/rate");
+//         const response = await axios.get("http://localhost:5000/api/rate");
 //         setRateChina(response.data.china);
 //         setRateThai(response.data.thai);
 //       } catch (error) {

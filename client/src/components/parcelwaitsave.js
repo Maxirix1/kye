@@ -8,7 +8,7 @@ const ParcelWaitSave = () => {
     const fetchParcels = async () => {
       try {
         const response = await axios.get(
-          "http://maxirix.thddns.net:7377/api/parcelswait"
+          "http://localhost:5000/api/parcelswait"
         );
         setParcels(response.data);
       } catch (error) {
@@ -26,7 +26,7 @@ const ParcelWaitSave = () => {
 
     try {
       const response = await axios.post(
-        "http://maxirix.thddns.net:7377/api/parcel/updatebranch",
+        "http://localhost:5000/api/parcel/updatebranch",
         updateStatus
       );
 

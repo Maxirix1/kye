@@ -99,7 +99,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
     try {
       // เช็คเครดิตก่อน
       const checkCredit = await axios.post(
-        "http://maxirix.thddns.net:7377/api/checkcredit",
+        "http://localhost:5000/api/checkcredit",
         { branch: parcelData.branch }
       );
 
@@ -122,7 +122,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
 
       // ส่งข้อมูลไปยัง API เพื่อบันทึกข้อมูล
       const response = await axios.post(
-        "http://maxirix.thddns.net:7377/api/saveData",
+        "http://localhost:5000/api/saveData",
         fullData
       );
 
@@ -175,7 +175,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
     const fetchRate = async () => {
       try {
         const response = await axios.get(
-          "http://maxirix.thddns.net:7377/api/rate"
+          "http://localhost:5000/api/rate"
         );
         setRateChina(response.data.china);
         setRateThai(response.data.thai);

@@ -29,7 +29,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://maxirix.thddns.net:7377/api/login",
+        "http://localhost:5000/api/login",
         formLogin,
         { withCredentials: true }
       );
