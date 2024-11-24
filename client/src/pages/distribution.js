@@ -99,7 +99,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
     try {
       // เช็คเครดิตก่อน
       const checkCredit = await axios.post(
-        "http://localhost:5000/api/checkcredit",
+        "http://147.50.228.115:5000/api/checkcredit",
         { branch: parcelData.branch }
       );
 
@@ -122,7 +122,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
 
       // ส่งข้อมูลไปยัง API เพื่อบันทึกข้อมูล
       const response = await axios.post(
-        "http://localhost:5000/api/saveData",
+        "http://147.50.228.115:5000/api/saveData",
         fullData
       );
 
@@ -175,7 +175,7 @@ const DistributionDashboard = ({ onDetailsChange }) => {
     const fetchRate = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/rate"
+          "http://147.50.228.115:5000/api/rate"
         );
         setRateChina(response.data.china);
         setRateThai(response.data.thai);

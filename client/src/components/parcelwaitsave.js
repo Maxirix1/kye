@@ -8,7 +8,7 @@ const ParcelWaitSave = () => {
     const fetchParcels = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/parcelswait"
+          "http://147.50.228.115:5000/api/parcelswait"
         );
         setParcels(response.data);
       } catch (error) {
@@ -26,7 +26,7 @@ const ParcelWaitSave = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/parcel/updatebranch",
+        "http://147.50.228.115:5000/api/parcel/updatebranch",
         updateStatus
       );
 

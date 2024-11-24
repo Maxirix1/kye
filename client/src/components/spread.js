@@ -19,7 +19,7 @@ const Spread = () => {
     const fetchParcels = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/parcels",
+          "http://147.50.228.115:5000/api/parcels",
           {
             from: storedBranch,
           }
@@ -47,7 +47,7 @@ const Spread = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/parcel",
+        "http://147.50.228.115:5000/api/parcel",
         formID
       );
       console.log(response.data);
@@ -102,7 +102,7 @@ const Spread = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/update-parcel-status",
+        "http://147.50.228.115:5000/api/update-parcel-status",
         {
           parcelIds: parcelIds,
         }

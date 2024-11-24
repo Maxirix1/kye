@@ -36,7 +36,7 @@ const Parcel = ({ onDetailsChange }) => {
   useEffect(() => {
     const fetchRate = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/rate");
+        const response = await axios.get("http://147.50.228.115:5000/api/rate");
         setRateChina(response.data.china);
         setRateThai(response.data.thai);
       } catch (error) {

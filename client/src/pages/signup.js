@@ -37,7 +37,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/signup", formSignup );
+        "http://147.50.228.115:5000/api/signup", formSignup );
       setMessage(response.data.message);
 
       if (response.status === 201) {
