@@ -18,21 +18,21 @@ exports.signupUser = async (req, res) => {
   const { username, email, passwrd } = req.body;
 
   try {
-    let user = await User.findOne({ where: { email } }); // เปลี่ยนจาก newUser เป็น User
+    let user = await User.findOne({ where: { email } }); 
     if (user) {
       return res.status(400).json({ message: "Email already exists!" });
     }
 
-    // ตรวจสอบว่า username ถูกใช้แล้วหรือยัง
-    user = await User.findOne({ where: { username } }); // เปลี่ยนจาก newUser เป็น User
+    
+    user = await User.findOne({ where: { username } }); 
     if (user) {
       return res.status(400).json({ message: "Username already exists!" });
     }
 
-    // เข้ารหัสรหัสผ่าน
+    
     const hashedPassword = await bcrypt.hash(passwrd, 16);
 
-    // สร้าง user ใหม่
+    
     const new_user = await User.create({
       username,
       email,
